@@ -9,11 +9,13 @@ import Weather from './services/Elysium-Planitia.js';
 function displayWeather(response) {
   for(let property in response) {
     if (response[property].AT) {
-      $('#dayCurrent').append(`${response[property].AT.mn}, `);
+      $('#solDay').append(`${property}: `);
+      $('#atMin').append(`${response[property].AT.mn} `);
+      $('#atMax').append(`${response[property].AT.mx} `);
+    } else if (!response[property].AT) {
+      $('#dayCurrent').append(`${property}: `);
+      $('#dayCurrent').append("N/A ");
     }
-      
-    // $('#dayCurrent').text(`Today's Martian weather is ${response[698].Season}`);
-    // $('#dayCurrent').text(`Today's Martian weather is ${response[property].AT.mx}`);
   }
 }
 
